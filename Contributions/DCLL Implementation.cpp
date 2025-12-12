@@ -3,7 +3,25 @@
 
 #include <stdexcept>
 
-class Property;
+class Property {
+private:
+    int propertyID;
+    double price;
+    string neighborhoodName;
+
+public:
+    Property(int id, double pr, const std::string& name) 
+        : propertyID(id), price(pr), neighborhoodName(name) {}
+
+    int getPropertyID() const { return propertyID; }
+    double getPrice() const { return price; }
+    const string& getNeighborhoodName() const { return neighborhoodName; }
+
+    void display() const {
+        cout << "  [Property ID: " << propertyID 
+                  << ", Price: $" << fixed << std::setprecision(2) << price << "]" << endl;
+    }
+};
 
 template<typename T>
 struct PropertyNode {
@@ -37,7 +55,7 @@ public:
             newNode->prev = tail;
             tail->next->prev = newNode;
             tail->next = newNode;
-            tail = newNode;    // insert at end
+            tail = newNode;
         }
 
         count++;
@@ -45,7 +63,7 @@ public:
 
     void remove(int propertyID) {
         if (tail == nullptr)
-            throw std::runtime_error("List is empty");
+            throw runtime_error("List is empty");
 
         PropertyNode<T>* current = tail->next;
 
@@ -66,19 +84,19 @@ public:
                 }
 
                 count--;
-                return;     // VERY IMPORTANT
+                return;
             }
 
             current = current->next;
 
         } while (current != tail->next);
 
-        throw std::runtime_error("Property ID not found");
+        throw runtime_error("Property ID not found");
     }
 
     T* search(int propertyID) const {
         if (tail == nullptr)
-            throw std::runtime_error("List is empty");
+            throw runtime_error("List is empty");
 
         PropertyNode<T>* current = tail->next;
 
@@ -90,12 +108,12 @@ public:
 
         } while (current != tail->next);
 
-        throw std::runtime_error("Property ID not found");
+        throw runtime_error("Property ID not found");
     }
 
     void traverse(void (*func)(const T&)) const {
         if (tail == nullptr)
-            throw std::runtime_error("List is empty");
+            throw runtime_error("List is empty");
 
         PropertyNode<T>* current = tail->next;
 
