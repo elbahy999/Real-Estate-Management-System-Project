@@ -1,26 +1,6 @@
 //Contrbutions: Zyad Mahgoub
 //DCLL Class Implementation: Implement the DoublyCircularLinkedList<Property> class completely from scratch, defining the internal PropertyNode structure with *prev and *next pointers.Fundamental Operations: Implement the core $O(1)$ insertion method (insert()) and the necessary $O(N)$ removal (remove(int propertyID)) and search (search(int propertyID)) operations required by other members.Circular and Doubly Logic: Ensure the list maintains the circular properties (tail connects to head, head connects to tail) and the doubly linked properties (*prev pointers are correct) during all insert and remove operations, handling edge cases such as empty lists, single-node lists, and multi-node lists.
 
-class Property {
-private:
-    int propertyID;
-    double price;
-    string neighborhoodName;
-
-public:
-    Property(int id, double pr, const std::string& name) 
-        : propertyID(id), price(pr), neighborhoodName(name) {}
-
-    int getPropertyID() const { return propertyID; }
-    double getPrice() const { return price; }
-    const string& getNeighborhoodName() const { return neighborhoodName; }
-
-    void display() const {
-        cout << "  [Property ID: " << propertyID 
-                  << ", Price: $" << fixed << std::setprecision(2) << price << "]" << endl;
-    }
-};
-
 template<typename T>
 struct PropertyNode {
     T data;
