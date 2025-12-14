@@ -3,27 +3,30 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
+#include <chrono>
+#include <fstream>
 #include "DCLL.h"
 #include "Property.h"
-
 using namespace std;
 
-/* ===================== Neighborhood ===================== */
-template <typename Ty>
 class Neighborhood {
 private:
     string name;
     int propertyCount;
     double totalValue;
-    DCLL<Property<Ty>> properties;
+    DCLL<Property>* properties;
 
 public:
-    // Constructor
     Neighborhood(const string& neighborhoodName)
-        : name(neighborhoodName), propertyCount(0), totalValue(0.0) {
+        : name(neighborhoodName), propertyCount(0), totalValue(0.0),
+        properties(new DCLL<Property>()) {
     }
 
-    // Getters
+    ~Neighborhood() {
+        delete properties;
+    }
+
     const string& getName() const {
         return name;
     }
@@ -36,26 +39,45 @@ public:
         return (propertyCount == 0) ? 0.0 : totalValue / propertyCount;
     }
 
-    DCLL<Property<Ty>>& getProperties() {
-        return properties;
+    DCLL<Property>& getProperties() const {
+        return *properties;
     }
 
-    /* ================= Add Property ================= */
-    void addProperty(const Property<Ty>& p) {
-        properties.insert(p);
+    void addProperty(const Property& p) {
+        properties->insert(p);
         totalValue += p.getPrice();
         propertyCount++;
     }
 
-    /* ================= Remove Property ================= */
     void removeProperty(int propertyID) {
-        Property<Ty>* propToRemove = properties.search(propertyID);
-        if (!propToRemove) {
-            throw runtime_error("Property not found");
-        }
-
-        totalValue -= propToRemove->getPrice();
-        properties.remove(propertyID);
+        Property* propToRemove = properties->search(propertyID);
+        double priceToRemove = propToRemove->getPrice();
+        properties->remove(propertyID);
+        totalValue -= priceToRemove;
         propertyCount--;
+    }
+
+    Property* searchProperty(int propertyID) const {
+        return properties->search(propertyID);
+    }
+
+    void displayProperties() const {
+        cout << "\n--- Neighborhood: " << name << " ---" << endl;
+        cout << "Property Count: " << propertyCount << endl;
+        cout << "Average Price: $" << getAveragePrice() << endl;
+
+        if (properties->isEmpty()) {
+            cout << "  (No properties)" << endl;
+        }
+        else {
+            properties->traverse([](const Property& p) {
+                cout << "  ID: " << p.getPropertyID()
+                    << ", Price: $" << p.getPrice() << endl;
+                });
+        }
+    }
+
+    int getPropertyID() const {
+        return 0;
     }
 };
