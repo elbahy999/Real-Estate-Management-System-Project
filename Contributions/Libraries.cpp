@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <stdexcept>
 #include <chrono>
 #include <fstream>
 #include "DCLL.h"
