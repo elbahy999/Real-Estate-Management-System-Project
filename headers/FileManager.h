@@ -9,7 +9,6 @@ using namespace std;
 
 class FileManager {
 public:
-    // ========== Save Properties ==========
     static void saveProperties(DCLL<Property>& list, const string& filename) {
         fstream file(filename, ios::out | ios::trunc);
         if (!file.is_open()) {
@@ -30,7 +29,6 @@ public:
 
         file.close();
     }
-    // ========== Load Properties ==========
     static void loadProperties(DCLL<Property>& list, const string& filename) {
         fstream file(filename, ios::in);
         if (!file.is_open()) {
@@ -62,3 +60,5 @@ public:
         file.close();
     }
 };
+
+
