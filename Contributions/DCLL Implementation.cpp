@@ -1,8 +1,6 @@
 //Contrbutions: Zyad Mahgoub
 //DCLL Class Implementation: Implement the DoublyCircularLinkedList<Property> class completely from scratch, defining the internal PropertyNode structure with *prev and *next pointers.Fundamental Operations: Implement the core $O(1)$ insertion method (insert()) and the necessary $O(N)$ removal (remove(int propertyID)) and search (search(int propertyID)) operations required by other members.Circular and Doubly Logic: Ensure the list maintains the circular properties (tail connects to head, head connects to tail) and the doubly linked properties (*prev pointers are correct) during all insert and remove operations, handling edge cases such as empty lists, single-node lists, and multi-node lists.
 
-#include <stdexcept>
-
 class Property {
 private:
     int propertyID;
