@@ -32,6 +32,9 @@ private:
     }
 
 public:
+    PropertyNode<Neighborhood>* get_tail() const {
+        return index.get_tail();
+    }
     void insertNeighborhood(const string& name) {
         if (!findNeighborhood(name)) {
             Neighborhood newNeighborhood(name);
@@ -113,4 +116,3 @@ public:
         return nullptr;
     }
 };
-
