@@ -3,7 +3,7 @@
 #include "NeighborhoodIndex.h"
 #include "Property.h"
 #include <string>
-#include "DCLL.h" // Needed for Function 3
+#include "DCLL.h" 
 
 // 1. Removed "template <typename t>" because this class relies 
 //    specifically on NeighborhoodIndex and Neighborhood structure.
