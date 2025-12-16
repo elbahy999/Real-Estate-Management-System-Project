@@ -1,6 +1,6 @@
 #include "DCLL.h"
 #include "Property.h"
 #include "Neighborhood.h"
+#include "NeighborhoodIndex.h"
 #include "FileManager.h"
 #include "PropertySearcher.h"
-#include "NeighborhoodIndex.h"
