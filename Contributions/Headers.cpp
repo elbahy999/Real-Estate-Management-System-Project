@@ -2,3 +2,4 @@
 #include "Property.h"
 #include "Neighborhood.h"
 #include "FileManager.h"
+#include "PropertySearcher.h"
