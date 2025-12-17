@@ -51,4 +51,5 @@ void RemoveProperty(DCLL<Property>& propertyList,NeighborhoodIndex& neighborhood
     string neighborhoodName = propertyToRemove->getNeighborhoodName();
      propertyList.remove(propertyID);
      neighborhoodIndex.removePropertyFromNeighborhood(propertyID, neighborhoodName);
+
 }
