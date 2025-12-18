@@ -32,6 +32,14 @@ private:
     }
 
 public:
+    DCLL<Neighborhood>& getIndex() {
+        return index;
+    }
+    
+    bool isEmpty() const {
+        return index.isEmpty();
+    }
+
     PropertyNode<Neighborhood>* get_tail() const {
         return index.get_tail();
     }
