@@ -171,9 +171,8 @@ To ensure your repository is perfect, copy these files exactly as follows:
 
 | Name | GitHub Handle | Header / Module Contribution |
 | --- | --- | --- |
-| **Zyad Akram** | @[Username1] | **(Base Data Structure & Templates)**: `DCLL.h` |
-| **[Name 2]** | @[Username2] | **Data Modeler**: `Property.h` & `Neighborhood.h` |
-| **[Name 3]** | @[Username3] | **Index Engineer**: `NeighborhoodIndex.h` |
+| **Zyad Akram** | @[Username1] | **(Base Data Structure & Templates & Data Modeler )**: `DCLL.h` & `Property.h` |
+| **** | @[Username2] | **Data Modeler & Index Engineer **:  `Neighborhood.h` & `NeighborhoodIndex.h`|
 | **Mohamed Ehab** | @[Username4] | **Persistence Specialist**: `FileManager.h` |
 | **Ziad Mohamed** | @[Username4] | **Persistence Specialist**: `CRUD.h` |
 | **Rodaina Agha** | @[Username5] | **Logic Controller**: `PropertySearcher.h` |
