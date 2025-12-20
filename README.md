@@ -176,7 +176,7 @@ To ensure your repository is perfect, copy these files exactly as follows:
 | **Mohamed Ehab** | @Moho32bit00 | **Persistence Specialist**: `FileManager.h` |
 | **Ziad Mohamed** | @Zikosalam1 | **Persistence Specialist**: `CRUD.h` |
 | **Rodaina Agha** | @rodaina-g-agha | **Logic Controller**: `PropertySearcher.h` |
-| **Ziad El-Bahy** | @elbahy999 | **Analytics & UI**: `PropertyAnalytics.h` & `main.cpp` |
+| **Ziad El-Bahy** | @elbahy999 | **Debugging & Analytics & UI**: `PropertyAnalytics.h` & `main.cpp` |
 
 ---
 
