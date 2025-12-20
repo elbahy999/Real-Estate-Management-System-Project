@@ -171,11 +171,11 @@ To ensure your repository is perfect, copy these files exactly as follows:
 
 | Name | GitHub Handle | Header / Module Contribution |
 | --- | --- | --- |
-| **Zyad Akram** | @[Username1] | **(Base Data Structure & Templates & Data Modeler )**: `DCLL.h` & `Property.h` |
-| **** | @[Username2] | **Data Modeler & Index Engineer **:  `Neighborhood.h` & `NeighborhoodIndex.h`|
-| **Mohamed Ehab** | @[Username4] | **Persistence Specialist**: `FileManager.h` |
-| **Ziad Mohamed** | @[Username4] | **Persistence Specialist**: `CRUD.h` |
-| **Rodaina Agha** | @[Username5] | **Logic Controller**: `PropertySearcher.h` |
+| **Zyad Akram** | @zyad-mahgoub119 | **(Base Data Structure & Templates & Data Modeler )**: `DCLL.h` & `Property.h` |
+| **Abdelrahman Sapry** | @PavoDirac | **Data Modeler & Index Engineer **:  `Neighborhood.h` & `NeighborhoodIndex.h`|
+| **Mohamed Ehab** | @Moho32bit00 | **Persistence Specialist**: `FileManager.h` |
+| **Ziad Mohamed** | @Zikosalam1 | **Persistence Specialist**: `CRUD.h` |
+| **Rodaina Agha** | @rodaina-g-agha | **Logic Controller**: `PropertySearcher.h` |
 | **Ziad El-Bahy** | @elbahy999 | **Analytics & UI**: `PropertyAnalytics.h` & `main.cpp` |
 
 ---
