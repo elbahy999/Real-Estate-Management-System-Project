@@ -221,6 +221,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
-
-Would you like me to help you format a **"How to Run"** GIF or a screenshot placeholder for your final repository?
 ---
