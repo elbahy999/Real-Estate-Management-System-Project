@@ -6,20 +6,22 @@
 #include "DCLL.h"
 #include "Property.h"
 #include "Neighborhood.h"
+
 using namespace std;
 
 class NeighborhoodIndex {
 private:
     DCLL<Neighborhood> index;
 
+    // Fixed: Added safety checks for empty list to prevent memory crash
     Neighborhood* findNeighborhood(const string& name) {
-        if (index.get_Count() == 0) return nullptr;
+        if (index.isEmpty()) return nullptr;
 
-        PropertyNode<Neighborhood>* current = index.get_tail();
-        if (current == nullptr) return nullptr;
+        PropertyNode<Neighborhood>* tail = index.get_tail();
+        if (tail == nullptr) return nullptr;
 
-        PropertyNode<Neighborhood>* start = current->next;
-        current = start;
+        PropertyNode<Neighborhood>* current = tail->next; // Start at the head
+        PropertyNode<Neighborhood>* start = current;
 
         do {
             if (current->data.getName() == name) {
@@ -35,7 +37,7 @@ public:
     DCLL<Neighborhood>& getIndex() {
         return index;
     }
-    
+
     bool isEmpty() const {
         return index.isEmpty();
     }
@@ -43,6 +45,7 @@ public:
     PropertyNode<Neighborhood>* get_tail() const {
         return index.get_tail();
     }
+
     void insertNeighborhood(const string& name) {
         if (!findNeighborhood(name)) {
             Neighborhood newNeighborhood(name);
@@ -57,6 +60,7 @@ public:
     void addPropertyToNeighborhood(const Property& p) {
         Neighborhood* n = findNeighborhood(p.getNeighborhoodName());
 
+        // If neighborhood doesn't exist, create it automatically
         if (!n) {
             insertNeighborhood(p.getNeighborhoodName());
             n = findNeighborhood(p.getNeighborhoodName());
@@ -104,10 +108,14 @@ public:
         }
     }
 
+    // Fixed: Added safety check for empty list
     Property* searchPropertyGlobal(int propertyID, string& foundInNeighborhood) {
         if (index.isEmpty()) return nullptr;
 
-        PropertyNode<Neighborhood>* current = index.get_tail()->next;
+        PropertyNode<Neighborhood>* tail = index.get_tail();
+        if (!tail) return nullptr;
+
+        PropertyNode<Neighborhood>* current = tail->next;
         PropertyNode<Neighborhood>* start = current;
 
         do {
@@ -117,6 +125,7 @@ public:
                 return prop;
             }
             catch (const runtime_error&) {
+                // Not in this neighborhood, keep looking
             }
             current = current->next;
         } while (current != start);
