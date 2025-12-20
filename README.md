@@ -133,12 +133,12 @@ The system is built on a hierarchical structure where the `NeighborhoodIndex` ac
 
 This project prioritizes memory efficiency and manual algorithmic implementation over standard library shortcuts.
 
-| Operation | Data Structure | Time Complexity | Purpose |
-| --- | --- | --- | --- |
-| **Search by ID** | DCLL |  | Linear traversal of the circular list. |
-| **Insert Property** | DCLL |  | Constant time insertion at the tail. |
-| **Price Sorting** | Vector (Bubble) |  | Stable manual sorting for reporting. |
-| **Neighborhood Filter** | Index Map |  | Nested traversal of neighborhoods and properties. |
+| Operation | Data Structure |  Purpose |
+| --- | --- | --- |
+| **Search by ID** | DCLL | Linear traversal of the circular list. |
+| **Insert Property** | DCLL | Constant time insertion at the tail. |
+| **Price Sorting** | Vector (Bubble) | Stable manual sorting for reporting. |
+| **Neighborhood Filter** | Index Map | Nested traversal of neighborhoods and properties. |
 
 ---
 
