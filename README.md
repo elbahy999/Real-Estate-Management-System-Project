@@ -47,16 +47,16 @@ The project is modularized into 8 core headers to maintain a clean separation of
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/RealEstateSystem.git
+git clone https://github.com/elbahy999/Real-Estate-Management-System-Project.git
 
 # Navigate to the folder
-cd RealEstateSystem
+cd Real-Estate-Management-System-Project
 
 # Compile the project
-g++ main.cpp -o RealEstateApp
+g++ main.cpp -o Real-Estate-Management-System-Project
 
 # Run the application
-./RealEstateApp
+./Real-Estate-Management-System-Project
 
 ```
 
