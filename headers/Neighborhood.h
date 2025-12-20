@@ -1,13 +1,9 @@
 #pragma once
-#include <stdexcept>
 #include <iostream>
 #include <string>
-#include <vector>
-#include <cmath>
-#include <chrono>
-#include <fstream>
 #include "DCLL.h"
 #include "Property.h"
+
 using namespace std;
 
 class Neighborhood {
@@ -15,50 +11,50 @@ private:
     string name;
     int propertyCount;
     double totalValue;
-    DCLL<Property>* properties;
+    // FIXED: Changed from pointer to direct object to avoid memory crashes
+    DCLL<Property> properties;
 
 public:
     Neighborhood(const string& neighborhoodName)
-        : name(neighborhoodName), propertyCount(0), totalValue(0.0),
-        properties(new DCLL<Property>()) {
+        : name(neighborhoodName), propertyCount(0), totalValue(0.0) {
     }
 
-    ~Neighborhood() {
-        delete properties;
-    }
+    // No manual delete needed anymore
+    ~Neighborhood() {}
 
-    const string& getName() const {
-        return name;
-    }
-
-    int getPropertyCount() const {
-        return propertyCount;
-    }
+    const string& getName() const { return name; }
+    int getPropertyCount() const { return propertyCount; }
 
     double getAveragePrice() const {
         return (propertyCount == 0) ? 0.0 : totalValue / propertyCount;
     }
 
-    DCLL<Property>& getProperties() const {
-        return *properties;
+    // Return reference to the internal list
+    DCLL<Property>& getProperties() {
+        return properties;
     }
 
     void addProperty(const Property& p) {
-        properties->insert(p);
+        properties.insert(p);
         totalValue += p.getPrice();
         propertyCount++;
     }
 
     void removeProperty(int propertyID) {
-        Property* propToRemove = properties->search(propertyID);
-        double priceToRemove = propToRemove->getPrice();
-        properties->remove(propertyID);
-        totalValue -= priceToRemove;
-        propertyCount--;
+        try {
+            Property* propToRemove = properties.search(propertyID);
+            double priceToRemove = propToRemove->getPrice();
+            properties.remove(propertyID);
+            totalValue -= priceToRemove;
+            propertyCount--;
+        }
+        catch (...) {
+            throw runtime_error("Property ID not found in neighborhood");
+        }
     }
 
-    Property* searchProperty(int propertyID) const {
-        return properties->search(propertyID);
+    Property* searchProperty(int propertyID) {
+        return properties.search(propertyID);
     }
 
     void displayProperties() const {
@@ -66,18 +62,14 @@ public:
         cout << "Property Count: " << propertyCount << endl;
         cout << "Average Price: $" << getAveragePrice() << endl;
 
-        if (properties->isEmpty()) {
+        if (properties.isEmpty()) {
             cout << "  (No properties)" << endl;
         }
         else {
-            properties->traverse([](const Property& p) {
+            properties.traverse([](const Property& p) {
                 cout << "  ID: " << p.getPropertyID()
                     << ", Price: $" << p.getPrice() << endl;
                 });
         }
-    }
-
-    int getPropertyID() const {
-        return 0;
     }
 };
