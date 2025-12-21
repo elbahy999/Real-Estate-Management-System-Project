@@ -5,9 +5,6 @@
 #include <string>
 #include "DCLL.h" 
 
-// 1. Removed "template <typename t>" because this class relies 
-//    specifically on NeighborhoodIndex and Neighborhood structure.
-
 class PropertySearcher {
 private:
     NeighborhoodIndex* index;
@@ -17,10 +14,11 @@ public:
         : index(neighborhoodIndex) {
     }
 
-    // Function 1: Search Property by ID (Your existing code)
+    // Function 1: Search Property by ID 
     Property* searchByID(int propertyID) {
+        //f that takes a property ID & returns a pointer to a Property
         PropertyNode<Neighborhood>* tail = index->get_tail();
-
+        //A pointer to a node that stores a Neighborhood.
         if (tail == nullptr) {
             return nullptr;
         }
@@ -31,11 +29,12 @@ public:
         // Check first neighborhood
         try {
             DCLL<Property>& properties = current->data.getProperties();
+            //refrance of property list
+            
             Property* found = properties.search(propertyID);
             return found;
         }
         catch (const runtime_error&) {
-            // Not in first neighborhood
         }
         current = current->next;
 
@@ -47,15 +46,14 @@ public:
                 return found;
             }
             catch (const runtime_error&) {
-                // Property not found in this neighborhood, continue
             }
             current = current->next;
         }
         return nullptr;
     }
 
-    // Function 2: Search Properties by Neighborhood Name
-    // Returns a pointer to the sub-list (DCLL) of properties
+    // Returns a pointer to the list DCLL of properties
+    //function 2
     DCLL<Property>* SearchPropertiesByNeighborhood(const string& neighborhoodName) {
         PropertyNode<Neighborhood>* tail = index->get_tail();
 
@@ -66,9 +64,7 @@ public:
         PropertyNode<Neighborhood>* start = tail->next;
         PropertyNode<Neighborhood>* current = start;
 
-        // 1. Check first neighborhood manually (Same logic as searchByID)
         if (current->data.getName() == neighborhoodName) {
-            // Return the address of the list so we don't make a copy
             return &(current->data.getProperties());
         }
 
@@ -81,15 +77,15 @@ public:
             }
             current = current->next;
         }
-        return nullptr; // Neighborhood not found
-  }
-     // Function 3: Search Properties by Price Range
+        return nullptr; 
+    }
+    // Function 3: Search Properties by Price Range
     DCLL<Property>* searchByPriceRange(double minPrice, double maxPrice) {
         DCLL<Property>* results = new DCLL<Property>();
 
         if (index == nullptr) return results;
 
-        // --- OUTER LOOP (Neighborhoods) ---
+        //outerloop Neighborhoods 
         PropertyNode<Neighborhood>* tail = index->get_tail();
 
         if (tail == nullptr) {
@@ -102,7 +98,7 @@ public:
         do {
             DCLL<Property>& props = current->data.getProperties();
 
-            // --- INNER LOOP (Properties) ---
+            // innerloop Properties
             if (!props.isEmpty()) {
                 // We declare new variables here with the SAME names. 
                 // They only exist inside this 'if' block.
