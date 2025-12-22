@@ -129,17 +129,16 @@ The system is built on a hierarchical structure where the `NeighborhoodIndex` ac
 
 ---
 
+### ⏱️ Complexity Analysis
 
-## 📊 Performance & Logic
+This project prioritizes memory efficiency and manual algorithmic implementation over standard library shortcuts.
 
-### Data Complexity
-
-| Operation | Complexity | Strategy |
+| Operation | Data Structure |  Purpose |
 | --- | --- | --- |
-| **Insertion** |  | Tail-pointer insertion |
-| **Search by ID** |  | Circular traversal |
-| **Analytics Sorting** |  | Manual Bubble Sort |
-| **Memory Cleanup** |  | Recursive node deletion |
+| **Search by ID** | DCLL | Linear traversal of the circular list. |
+| **Insert Property** | DCLL | Constant time insertion at the tail. |
+| **Price Sorting** | Vector (Bubble) | Stable manual sorting for reporting. |
+| **Neighborhood Filter** | Index Map | Nested traversal of neighborhoods and properties. |
 
 ---
 
